@@ -4,18 +4,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class AdapterPlaneta extends ArrayList<Planeta> {
+public class AdapterPlaneta extends ArrayAdapter<Planeta> {
     Context lcontext;
 
-    public AdapterPlaneta(@NonNull Context context, int resource, @NonNull list<Planeta> objects){
+    public AdapterPlaneta(@NonNull Context context, int resource, @NonNull List<Planeta> objects) {
         super(context, resource, objects);
-        lcontext=context;
+        lcontext = context;
     }
+
 
     @NonNull
     @Override
