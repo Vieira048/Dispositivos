@@ -1,13 +1,9 @@
 package com.example.meuapp;
 
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +12,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        getString(R.string.app_name);
+        lv=findViewById(R.id.listView);
+        // Recuperar dados datasource
+        PlanetaController pcontrole = new PlanetaController();
+
+        ApapterPlaneta adaptador = new AdapterPlaneta(
+                this,
+                //XML com texto e img,
+                pcontroler.listaPlaneta();
+        )
+
+
+        lv.setAdapter(adaptador);
+
 
     }
 }
