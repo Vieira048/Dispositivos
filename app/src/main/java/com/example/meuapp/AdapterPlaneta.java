@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -23,8 +24,10 @@ public class AdapterPlaneta extends ArrayAdapter<Planeta> {
     @NonNull
     @Override
     public View getView(int position, @NonNull View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater.from(lcontext);
-         return super.getView(position, convertView, parent);
+        View view=LayoutInflater.inflate(R.layout.item,parent,);
+
+
+        TextView tvNome= view.findViewById()
     }
 
 }
