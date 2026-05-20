@@ -5,7 +5,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,10 +15,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 import kotlin.Suppress;
 
 public class MainActivity extends AppCompatActivity {
     SQLiteDatabase sqLiteDatabase;
+
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +41,21 @@ public class MainActivity extends AppCompatActivity {
         //Recuperar Dados de SQLITE
         Cursor c =sqLiteDatabase.rawQuery("SELECT id, id*10,  titulo, nota FROM notas", null);
         c.moveToFirst();
-        @SuppressLint("Range") int id =c.getInt(c.getColumnIndex("id"));
-        @SuppressLint("Range")String titulo=c.getString(c.getColumnIndex("titulo"));
-        @SuppressLint("Range")nota=c.getString(c.getColumnIndex("nota"));
+        while (!c.isAfterLast()) {
+            @SuppressLint("Range") int id = c.getInt(c.getColumnIndex("id"));
+            @SuppressLint("Range") String titulo = c.getString(c.getColumnIndex("titulo"));
+            @SuppressLint("Range") nota = c.getString(c.getColumnIndex("nota"));
 
-        Log.d("SELECT", Integer.toString(id)+","+ titulo + "," + nota);
-        c.moveToNext();
+            Log.d("SELECT", Integer.toString(id) + "," + titulo + "," + nota);
+            c.moveToNext();
+        ArrayList<String> listaTitulos = new ArrayList<>();
+        for (Nota nota :listaNotas){
+            listaTitulos.add(nota.titulo);
+        }
+        }
+        ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,android.R.listaTitulo);
+        lv.setAdapter(adapter);
+
+
     }
 }
