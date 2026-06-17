@@ -1,8 +1,7 @@
-package com.example.meuapp;
+package com.example.myapplication;
 
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -11,15 +10,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.myapplication.R;
-
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     Button b;
-    TextView tv;
-    EditText edmin, edmax;
+    int contador=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,31 +23,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         b = findViewById(R.id.button);
-        tv = findViewById(R.id.tv);
-        edmin = findViewById(R.id.edMin);
-        edmax = findViewById(R.id.edMax);
+        TextView tv = findViewById(R.id.tv);
 
 
         b.setOnClickListener(v -> {
-            // int min= Integer.parseInt(edmin.getText().toString());
-            // int max= Integer.parseInt(edmax.getText().toString());
-            String minStr = edmin.getText().toString();
-            String maxStr = edmax.getText().toString();
-            if (minStr.isEmpty()){
-                edmin.setError("Informe uma valor mínimo");
-                return;
-            }
-            if (maxStr.isEmpty()) {
-                edmax.setError("Informe um valor máximo");
-                return;
-            }
-
-            int min=Integer.parseInt(minStr);
-            int max=Integer.parseInt(maxStr);
-
-
+            contador++;
             Random random= new Random();
-            int r = random.nextInt(min, max);
+            int r = random.nextInt(100);
             tv.setText(Integer.toString(r));
 
         });
